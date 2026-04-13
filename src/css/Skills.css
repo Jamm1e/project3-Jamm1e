@@ -1,0 +1,40 @@
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.skill-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.skill-icon {
+  font-family: 'DM Mono', monospace;
+  font-size: 1rem;
+  color: var(--accent);
+  width: 28px;
+  text-align: center;
+}
+
+.skill-category {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Coursework */
+.coursework-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}

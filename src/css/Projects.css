@@ -1,0 +1,41 @@
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.project-card { padding: 32px; }
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.project-badge {
+  border-color: rgba(124, 156, 255, 0.3);
+  color: var(--accent);
+  background: rgba(124, 156, 255, 0.08);
+}
+
+.project-links { display: flex; gap: 8px; }
+
+.project-link-btn { padding: 6px 14px; font-size: 0.8rem; }
+
+.project-title {
+  font-size: 1.4rem;
+  color: var(--text);
+  margin-bottom: 12px;
+  font-family: 'DM Serif Display', serif;
+}
+
+.project-description {
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  line-height: 1.75;
+}
+
+.project-tech { display: flex; flex-wrap: wrap; gap: 8px; }

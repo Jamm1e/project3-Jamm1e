@@ -1,0 +1,74 @@
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 48px;
+  align-items: start;
+}
+
+.about-bio p {
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+.about-bio strong { color: var(--text); font-weight: 600; }
+.about-bio em { color: var(--accent2); font-style: normal; }
+
+/* Certs */
+.about-certs { margin-top: 32px; }
+
+.cert-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cert-list li {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  padding: 10px 14px;
+  border-radius: 8px;
+  border-left: 2px solid var(--accent);
+  background: var(--surface);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cert-year {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--accent2);
+}
+
+/* Highlights */
+.about-highlights { display: flex; flex-direction: column; gap: 14px; }
+
+.highlight-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.highlight-icon { font-size: 1.5rem; flex-shrink: 0; }
+
+.highlight-label {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.9rem;
+  margin-bottom: 2px;
+}
+
+.highlight-detail {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-family: 'DM Mono', monospace;
+}
+
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}

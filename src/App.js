@@ -1,32 +1,42 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import About from './components/about';
-import Skills from './components/skills';
-import Home from './components/home';
-import Contact from './components/contact';
-
+import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
+import Home from './components/Home';
+import About from './components/About';
+import Skills from './components/Skills';
+import Projects from './components/Projects';
+import Contact from './components/Contact';
+import './css/App.css'
 
 export default function App() {
   return (
-    <>
+    <BrowserRouter>
+      <div className="app">
+        <nav className="navbar">
+          <div className="nav-logo">
+            <span className="logo-text">JM</span>
+          </div>
+          <div className="nav-links">
+            <NavLink to="/" end className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>Home</NavLink>
+            <NavLink to="/about" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>About</NavLink>
+            <NavLink to="/skills" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>Skills</NavLink>
+            <NavLink to="/projects" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>Projects</NavLink>
+            <NavLink to="/contact" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>Contact</NavLink>
+          </div>
+        </nav>
 
-      <BrowserRouter>
-            {/* Navigation */}
-            <nav>
-                <Link to="/">Home</Link> |{" "}
-                <Link to="/about">About</Link> |{" "}
-                <Link to="/skills">Skills</Link> |{" "}
-                <Link to="/contact">Contact</Link> |{" "}
-            </nav>
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/skills" element={<Skills />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
 
-            {/* Routes */}
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/skills" element={<Skills />} />
-                <Route path="/contact" element={<Contact />} />
-            </Routes>
-        </BrowserRouter>
-        
-    </>
+        <footer className="footer">
+          <p>© 2026 Jammie-Ann Matthias</p>
+        </footer>
+      </div>
+    </BrowserRouter>
   );
 }

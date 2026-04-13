@@ -1,0 +1,120 @@
+.home {
+  min-height: calc(100vh - 64px);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Hero ── */
+.hero {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px 60px;
+  overflow: hidden;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  width: 100%;
+}
+
+.hero-name {
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  line-height: 1.05;
+  margin-bottom: 24px;
+  color: var(--text);
+}
+
+.hero-name-accent {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 60%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-tagline {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 480px;
+  margin-bottom: 36px;
+  line-height: 1.8;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* ── Decorative dot grid ── */
+.hero-grid {
+  position: absolute;
+  right: 0; top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 18px;
+  padding: 32px;
+  opacity: 0.35;
+}
+
+@keyframes dotPop {
+  from { opacity: 0; transform: scale(0); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.grid-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: dotPop 0.4s ease both;
+}
+
+/* ── Stats bar ── */
+.stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  border-top: 1px solid var(--border);
+  padding: 32px 24px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 40px;
+}
+
+.stat-number {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2rem;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  font-family: 'DM Mono', monospace;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+}
+
+.stat-divider {
+  width: 1px; height: 40px;
+  background: var(--border);
+}
+
+@media (max-width: 600px) {
+  .hero-grid { display: none; }
+  .stat { padding: 16px 20px; }
+  .stat-divider { display: none; }
+}
