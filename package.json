@@ -9,10 +9,13 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "bootstrap": "^5.3.8",
+    "framer-motion": "^12.38.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-router-dom": "^7.14.0",
-    "react-scripts": "^5.0.1"
+    "react-router-dom": "^7.14.2",
+    "react-scripts": "^5.0.1",
+    "react-type-animation": "^3.2.0"
   },
   "browserslist": {
     "production": [
