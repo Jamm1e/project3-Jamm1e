@@ -150,6 +150,59 @@ a:hover { color: #fff; }
   .jme-nav .nav-links.open { display: flex; }
 }
 
+/* ── Navbar Brand Scaling ── */
+.jme-nav .brand {
+  font-family: var(--font-display);
+  /* Scales between 1.1rem and 1.4rem based on screen width */
+  font-size: clamp(1.1rem, 4vw, 1.4rem); 
+  color: var(--cyan);
+  flex-shrink: 0;
+  transition: color 0.6s ease;
+}
+
+/* ── Responsive Hamburger ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(3px, 1vw, 5px); /* Gap shrinks on smaller screens */
+  cursor: pointer;
+  background: none;
+  border: none;
+  /* Reduced padding for a smaller "hit box" on tiny screens */
+  padding: clamp(4px, 1.5vw, 8px); 
+  z-index: 110;
+  flex-shrink: 0;
+}
+
+/* Fluid Bar Sizing */
+.hamburger span {
+  display: block;
+  /* Width scales between 18px and 24px */
+  width: clamp(18px, 5vw, 24px); 
+  height: 2px;
+  background-color: var(--cyan);
+  border-radius: 2px;
+  transition: background-color 0.6s ease, width 0.3s ease;
+}
+
+/* ── Media Query Priority ── */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex !important;
+  }
+  
+  .jme-nav {
+    /* Tighter padding for mobile to save horizontal space */
+    padding: 0.6rem 1rem; 
+  }
+
+  /* Ensure the right group doesn't push elements off-screen */
+  .nav-right-group {
+    gap: clamp(0.5rem, 2vw, 1rem); 
+  }
+}
+
 /* ── hero ── */
 #home {
   min-height: 100vh;
@@ -236,6 +289,27 @@ a:hover { color: #fff; }
   gap: 1.25rem;
   margin-top: 3rem;
 }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Style for the explicit "View Repo" button */
+.repo-link-btn {
+  font-size: 0.75rem;
+  border: 1px solid var(--cyan);
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: var(--cyan);
+  transition: all 0.3s ease;
+}
+
+.repo-link-btn:hover {
+  background: rgba(103, 232, 249, 0.1);
+  color: #fff;
+}
+
 .project-card {
   background: var(--navy-card);
   border: 1px solid var(--navy-border);
@@ -246,6 +320,8 @@ a:hover { color: #fff; }
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   position: relative;
   overflow: hidden;
+
+  animation: fadeIn 0.5s ease-out forwards;
 }
 .project-card::before {
   content: '';
@@ -451,4 +527,70 @@ a {
 
 body.light-theme a:hover {
   color: #2C5282; /* Darker blue on hover */
+}
+
+/* GitHub Profile Card in About Section */
+.github-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  background: var(--navy-card);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--navy-border);
+  margin-top: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.gh-avatar {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: 2px solid var(--cyan);
+}
+
+.gh-details h4 {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--light);
+}
+
+.gh-details p {
+  margin: 4px 0;
+  font-size: 0.8rem;
+}
+
+/* Modal Styling */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 12, 27, 0.8);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: var(--navy-mid);
+  padding: 2.5rem;
+  border-radius: 15px;
+  border: 1px solid var(--navy-border);
+  max-width: 500px;
+  width: 90%;
+}
+
+.modal-stats {
+  display: flex;
+  justify-content: space-around;
+  margin: 2rem 0;
+  color: var(--cyan);
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
 }

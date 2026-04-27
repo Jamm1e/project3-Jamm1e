@@ -1,13 +1,4 @@
-import ProjectCard from './ProjectCard';
-
-const projectsData = [
-  {
-    title: "My Portfolio",
-    description: "A single-page website to showcase my professional projects and skills.",
-    tech: "React, Bootstrap, React-Bootstrap, CSS",
-    github: "https://github.com/Jamm1e",
-    demo: "https://portfolio-jamm1e.netlify.app",
-  },
+export const projectsData = [
   {
     title: "Full-Stack Finance Tracker",
     description: "A comprehensive financial tracking web application with a dashboard featuring data visualizations, CRUD operations for transactions and goals, powered by a Spring Boot REST API.",
@@ -27,16 +18,16 @@ const projectsData = [
     github: "https://github.com/Jamm1e/AIIE_2025_Deliverables/blob/main/Trial_Translator_Gemini_Chatbot.ipynb",
   },
   {
-    title: "Financial Microservice",
-    description: "Integrated a RESTful incentives API with a backend transaction app using Spring Boot for JPMC's software engineering simulation.",
-    tech: "Java, Spring Boot, REST API",
-    github: "https://github.com/Jamm1e/forage-midas",
-  },
-  {
     title: "Flower Classification CNN",
     description: "A convolutional neural network that classifies flower species from images, built with TensorFlow and Keras.",
     tech: "Python, TensorFlow, Keras",
     github: "https://github.com/Jamm1e/AIIE_2025_Deliverables/blob/main/Flower_Species_project.ipynb",
+  },
+  {
+    title: "Financial Microservice",
+    description: "Integrated a RESTful incentives API with a backend transaction app using Spring Boot for JPMC's software engineering simulation.",
+    tech: "Java, Spring Boot, REST API",
+    github: "https://github.com/Jamm1e/forage-midas",
   },
   {
     title: "In the Face of Catastrophe",
@@ -51,21 +42,11 @@ const projectsData = [
     tech: "Python",
     github: "https://github.com/Jamm1e/Berg-Bot",
   },
+  {
+    title: "My Portfolio",
+    description: "A single-page website to showcase my professional projects and skills.",
+    tech: "React, Bootstrap, React-Bootstrap, CSS",
+    github: "https://github.com/Jamm1e",
+    demo: "https://portfolio-jamm1e.netlify.app",
+  },
 ];
-
-function Projects() {
-  return (
-    <section id="projects">
-      <p className="section-label">What I've Built</p>
-      <h2 className="section-heading">Projects</h2>
-
-      <div className="projects-grid">
-        {projectsData.map((project, index) => (
-          <ProjectCard key={index} {...project} />
-        ))}
-      </div>
-    </section>
-  );
-}
-
-export default Projects;
