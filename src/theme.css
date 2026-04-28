@@ -594,3 +594,53 @@ body.light-theme a:hover {
   gap: 8px;
   font-size: 0.9rem;
 }
+
+/* Styling for the Demo Icon in the card top bar */
+.demo-icon-link {
+  color: var(--cyan);
+  margin-left: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.demo-icon-link:hover {
+  transform: scale(1.2);
+  color: #fff;
+}
+
+/* A subtle badge at the bottom of cards with demos */
+.card-demo-tag {
+  margin-top: 1rem;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--cyan);
+  background: rgba(103, 232, 249, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  font-weight: 700;
+}
+
+/* Update Modal Footer to include the Demo button */
+.modal-footer {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.demo-cta {
+  background: var(--cyan);
+  color: var(--navy) !important;
+  border: 1px solid var(--cyan);
+  padding: 0.85rem 2rem;
+  border-radius: 4px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.demo-cta:hover {
+  background: transparent;
+  color: var(--cyan) !important;
+}

@@ -8,17 +8,19 @@ function Projects({ searchQuery, projectsData: featuredProjects }) {
   useEffect(() => {
     const fetchRepos = async () => {
       try {
-        // Fetching most recent public repos for Jamm1e
         const response = await fetch('https://api.github.com/users/Jamm1e/repos?sort=updated&per_page=6');
         const data = await response.json();
         
-        // Mapping GitHub data to match your ProjectCard format
         const githubProjects = data.map(repo => ({
           title: repo.name,
           description: repo.description || "No description provided.",
           tech: repo.language || "Web",
           github: repo.html_url,
-          isGitHubRepo: true // Flag to distinguish dynamic repos
+          // Added these fields for the modal stats
+          stars: repo.stargazers_count,
+          watchers: repo.watchers_count,
+          issues: repo.open_issues_count,
+          isGitHubRepo: true 
         }));
 
         setRepos(githubProjects);
@@ -32,7 +34,6 @@ function Projects({ searchQuery, projectsData: featuredProjects }) {
     fetchRepos();
   }, []);
 
-  // Combine featured projects with GitHub repos, avoiding duplicates
   const allProjects = [...featuredProjects, ...repos];
   
   const filteredProjects = allProjects.filter(project => 

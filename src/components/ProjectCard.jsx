@@ -1,53 +1,43 @@
-// export default function ProjectCard({ title, description, tech, github, demo, isGitHubRepo }) {
-//   const technologies = tech.split(',').map(t => t.trim());
-
-//   return (
-//     <div className="project-card">
-//       <div className="card-top-bar">
-//         <span className="card-folder-icon">{isGitHubRepo ? '' : '⬡'}</span>
-//         <div className="card-links">
-//           {github && (
-//             <a href={github} target="_blank" rel="noopener noreferrer" className="repo-link-btn">
-//               {isGitHubRepo ? "View Repo" : "GitHub"}
-//             </a>
-//           )}
-//         </div>
-//       </div>
-
-//       <h3 className="card-title">{title}</h3>
-//       <p className="card-desc">{description}</p>
-
-//       <ul className="card-tech">
-//         {technologies.map((t, i) => <li key={i}>{t}</li>)}
-//       </ul>
-//     </div>
-//   );
-// }
-
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiGithub, FiExternalLink, FiFolder, FiStar, FiEye } from 'react-icons/fi'; // npm install react-icons
+import { FiGithub, FiExternalLink, FiFolder, FiStar, FiEye } from 'react-icons/fi';
 
 export default function ProjectCard(project) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
+      {/* ── Project Card ── */}
       <div className="project-card" onClick={() => setIsModalOpen(true)}>
         <div className="card-top-bar">
           <FiFolder className="card-folder-icon" />
           <div className="card-links">
-            {project.github && <FiGithub />}
+            {project.github && (
+              <a href={project.github} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>
+                <FiGithub />
+              </a>
+            )}
+            {/* Show external link icon if demo exists */}
+            {project.demo && (
+              <a href={project.demo} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} className="demo-icon-link">
+                <FiExternalLink />
+              </a>
+            )}
           </div>
         </div>
         <h3 className="card-title">{project.title}</h3>
         <p className="card-desc">{project.description}</p>
+        
         <ul className="card-tech">
           {project.tech.split(',').map(t => <li key={t}>{t.trim()}</li>)}
         </ul>
+
+        {project.demo && (
+          <div className="card-demo-tag">Live Demo Available</div>
+        )}
       </div>
 
-      {/* Detail Modal */}
+      {/* ── Detail Modal ── */}
       <AnimatePresence>
         {isModalOpen && (
           <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
@@ -63,16 +53,24 @@ export default function ProjectCard(project) {
               
               {project.isGitHubRepo && (
                 <div className="modal-stats">
-                  <div className="stat"><FiStar /> Stars: {project.stars}</div>
-                  <div className="stat"><FiEye /> Watchers: {project.watchers}</div>
-                  <div className="stat">❗ Issues: {project.issues}</div>
+                  <div className="stat"><FiStar /> {project.stars || 0}</div>
+                  <div className="stat"><FiEye /> {project.watchers || 0}</div>
+                  <div className="stat">❗ {project.issues || 0}</div>
                 </div>
               )}
               
-              <div className="modal-footer">
-                <a href={project.github} target="_blank" rel="noreferrer" className="hero-cta">
-                  <FiGithub /> View Source
-                </a>
+              <div className="modal-footer" style={{ display: 'flex', gap: '1rem', marginTop: '2rem' }}>
+                {project.github && (
+                  <a href={project.github} target="_blank" rel="noreferrer" className="hero-cta">
+                    <FiGithub /> View Source
+                  </a>
+                )}
+                {/* Prominent Demo Button */}
+                {project.demo && (
+                  <a href={project.demo} target="_blank" rel="noreferrer" className="demo-cta">
+                    <FiExternalLink /> Live Demo
+                  </a>
+                )}
               </div>
             </motion.div>
           </div>
